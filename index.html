@@ -48,13 +48,15 @@ img{max-width:100%;display:block}
 .wrap{width:min(1240px,calc(100% - 40px));margin-inline:auto}
 
 /* ---------- Floating nav ---------- */
-.dock{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:50;display:flex;align-items:center;gap:6px;padding:6px;background:color-mix(in srgb,var(--surface) 82%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:999px;box-shadow:0 8px 30px rgb(0 0 0 / .06)}
-.dock .me{width:40px;height:40px;border-radius:50%;overflow:hidden;flex:none}
-.dock .me img{width:100%;height:100%;object-fit:cover;object-position:50% 0;transform:scale(2.6);transform-origin:50% 1%}
-.dock nav{display:flex}
+.dock{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:50;display:flex;width:max-content;max-width:calc(100% - 32px);align-items:center;gap:6px;padding:6px;background:color-mix(in srgb,var(--surface) 82%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:999px;box-shadow:0 8px 30px rgb(0 0 0 / .06)}
+.dock .logo{display:flex;align-items:center;padding:0 10px 0 12px;flex:none}
+.dock .logo img{height:20px;width:auto;display:block;position:relative;top:2px}
+body.dark .dock .logo img{filter:invert(1)}
+.dock nav{display:flex;position:relative;top:3px}
+.dock-actions{display:flex;align-items:center;gap:6px}
 .dock nav a{padding:9px 14px;border-radius:999px;font-size:14px;font-weight:500;color:var(--muted);transition:background .2s,color .2s}
 .dock nav a:hover{color:var(--ink);background:var(--surface-2)}
-.theme-toggle{width:40px;height:40px;border-radius:50%;border:0;background:var(--surface-2);color:var(--ink);font-size:16px;cursor:pointer}
+.theme-toggle{width:40px;height:40px;border-radius:50%;border:0;padding:0 0 4px;background:var(--surface-2);color:var(--ink);font-size:16px;cursor:pointer}
 .status{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:var(--invert-bg);color:var(--invert-ink);font-size:13px;font-weight:600;white-space:nowrap}
 .status .short{display:none}
 .cv-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 15px;border-radius:999px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink);font-size:13px;font-weight:600;white-space:nowrap;transition:background .2s,border-color .2s}
@@ -306,19 +308,18 @@ footer nav a:hover{color:var(--ink)}
 <body>
 
 <header class="dock" aria-label="Main">
-  <a class="me" href= aria-label="Back to top"><img data-photo alt=""></a>
+  <a class="logo" href="#top" aria-label="Sakib — back to top"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAAAaCAYAAAAUqxq7AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAA6NJREFUeAHtWe110zAUvYcFyAZoA7IBZoJ2A2uDphNYTNBsYDNBygTuBoYJHCZImaD4pXKRn64kp8C/3nNe2/h9f/jJToE0qonaifqJDhPVuAzG67X+7xLuJhpWyFeB3EZdH/Ecb01iaX08g5d7CmjABTluvPAToQbrkhXYQG/EMhmGfqV8mJxL+BPaBbwKPB9Go5enkKCGFQZKyQquMwEz9EreEhmLuPMp3knpOqwvklBN/KMjghK4niiHPBrEY9wWdPqCD0Ns9gHfIY5dN3Ig+hLXHjz3bahsicDB87oLkjXgHemRR6lAHfJddigXaER+SjV//y5IqlHCx4lu/d+fFO8X0rjG62AyPIt45I8TfUUejwUfhtgM8XEuUEWEnVfYEt490rhJXDe4DI+BXkP4n//SPsNWff4xF4hNz9ydDeE9gMMiHeiaxR5iLtCB2LxF3O33Cf0ZBnlYxDGe10KF+N4Nd4wonbBu//TInwy5ImnZCs/PRvq6W+l7VPwtsWU9zyDePy/6u4ziDKsCZzDgSz78bJAGW+r6WpfR1yfUoPgVeBMAfgC87FKHdV2SDuyRRqdsyJ6y6tpVQneD/OTNxc5hRFzgEBV4gRoU8reJgETRYD10gFIMPdY2oWuQL45MQ2mHsQkMYVGecDocG5JcSC0yj94e+ql5DGxnnXtsM/5HrFvwLO4QO+SbcAJ5RJFTTLa9HJlH7vdc+d4HahIy2rDzvx+V3Q9cPVuADcqTzPg/iZ0SGhReli3K72I14uC0jAl4PZZdqonfquAz1xwBm0CnZPYFH2zFnFEjDlocdkiPYtiNG8IfsHw0KCVsVwSc20MVkbdKpiNxVl7Oga+Zc13G8IOCSSheeeO5IpSoDfzsSPCO6NxhfYH0idkrfk/s6Hzad/jTyc4HYAKF40TfwPEdr0M30Rcs36M2xLZD/K61A//axJBrufdFDfF/hziOB/mhJ0SqKN298cQmyHgDjujK0bn3utdeNuwMS7BDursd8V8pfUtk9HvVgfhokH7672bF0vGXuzVcIfAZfUI/FYOW6RA3wgT8isSpp4HJpChqolupeFCOw8RGpFGS0+97jsh0KpYRy1jC0/cEDoP83myROS2FIbdGHxg5+UBEsUro5CYjxHzM6sRCW72XqRM2OsQNm7HxfLE/IA3j5eYv78XGDS7/tmE1ZM/0SH8P9K/RYVmkBm9YgP1jocYbFphvp3DnbPGGCHJ7yw6RAt3jP+A3OhG04nZpCV0AAAAASUVORK5CYII=" alt="Sakib"></a>
   <nav>
     <a href="#services">Services</a>
     <a href="#about">About</a>
     <a href="#work">Work</a>
     <a href="#faq">FAQ</a>
   </nav>
+  <div class="dock-actions">
   <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode">☾</button>
   <a class="cv-btn" href="Muhammad%20Sakib.pdf" download="Muhammad_Sakib_CV.pdf" aria-label="Download CV"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg><span class="label">Download CV</span></a>
   <a class="status" href="#contact"><span class="pulse"></span><span class="long">Available for work</span><span class="short">Available</span></a>
-
-
-                </li>
+  </div>
 </header>
 
 <main id="top">
