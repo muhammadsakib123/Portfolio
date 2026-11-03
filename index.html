@@ -59,9 +59,11 @@ body.dark .dock .logo img{filter:invert(1)}
 .theme-toggle{width:40px;height:40px;border-radius:50%;border:0;padding:0 0 4px;background:var(--surface-2);color:var(--ink);font-size:16px;cursor:pointer}
 .status{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:var(--invert-bg);color:var(--invert-ink);font-size:13px;font-weight:600;white-space:nowrap}
 .status .short{display:none}
-.cv-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 15px;border-radius:999px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink);font-size:13px;font-weight:600;white-space:nowrap;transition:background .2s,border-color .2s}
-.cv-btn:hover{border-color:var(--ink)}
+.cv-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 15px;border-radius:999px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink);font-size:13px;font-weight:600;white-space:nowrap;transition:transform .2s,background .2s,border-color .2s}
+.cv-btn:hover{border-color:var(--ink);transform:translateY(-2px)}
 .cv-btn svg{width:15px;height:15px;flex:none}
+body.dark .cv-btn{background:var(--invert-bg);color:var(--invert-ink);border-color:var(--invert-bg)}
+body.dark .cv-btn:hover{border-color:var(--invert-bg)}
 .pulse{width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 0 rgb(200 241 105 / .7);animation:pulse 2s infinite}
 @keyframes pulse{70%{box-shadow:0 0 0 8px rgb(200 241 105 / 0)}100%{box-shadow:0 0 0 0 rgb(200 241 105 / 0)}}
 
@@ -323,7 +325,7 @@ footer nav a:hover{color:var(--ink)}
   </nav>
   <div class="dock-actions">
   <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
-  <a class="cv-btn" href="Muhammad%20Sakib.pdf" download="Muhammad_Sakib_CV.pdf" aria-label="Download CV"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg><span class="label">Download CV</span></a>
+  <a class="cv-btn" href="Muhammad%20Sakib.pdf" download="Muhammad_Sakib_CV.pdf" aria-label="Download CV"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg><span class="label roll"><span>Download CV</span><span aria-hidden="true">Download CV</span></span></a>
   </div>
 </header>
 
