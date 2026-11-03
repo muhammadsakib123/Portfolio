@@ -303,6 +303,12 @@ footer nav a:hover{color:var(--ink)}
   .about-side{gap:12px}
   .stat{padding:20px;min-height:140px}
 }
+
+/* Header tweaks */
+.cv-btn{background:#1c1c1a;color:#fff;border-color:#1c1c1a;}
+.cv-btn:hover{background:#000;border-color:#000;}
+.theme-toggle{display:inline-flex;align-items:center;justify-content:center;}
+.theme-toggle svg{color:#8a8a85;transform:translateY(2px);}
 </style>
 </head>
 <body>
@@ -316,9 +322,8 @@ footer nav a:hover{color:var(--ink)}
     <a href="#faq">FAQ</a>
   </nav>
   <div class="dock-actions">
-  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode">☾</button>
+  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
   <a class="cv-btn" href="Muhammad%20Sakib.pdf" download="Muhammad_Sakib_CV.pdf" aria-label="Download CV"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg><span class="label">Download CV</span></a>
-  <a class="status" href="#contact"><span class="pulse"></span><span class="long">Available for work</span><span class="short">Available</span></a>
   </div>
 </header>
 
@@ -486,9 +491,11 @@ footer nav a:hover{color:var(--ink)}
 
   // Theme toggle — starts from the system setting
   const btn = document.getElementById('themeToggle');
+  const MOON_ICON = '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  const SUN_ICON = '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>';
   const apply = dark => {
     document.body.classList.toggle('dark', dark);
-    btn.textContent = dark ? '☀' : '☾';
+    btn.innerHTML = dark ? SUN_ICON : MOON_ICON;
     btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
   };
   apply(window.matchMedia('(prefers-color-scheme: dark)').matches);
