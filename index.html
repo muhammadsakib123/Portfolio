@@ -378,6 +378,41 @@ html,body{overflow-x:clip}
 body.dark .lp-rail i::after{background:#f1f1ec}
 @media (max-width:900px){.lp-stage{padding-top:70px;padding-bottom:40px}.lp-cards{height:min(640px,calc(100vh - 140px))}}
 </style>
+<!-- Education section styles -->
+<style>
+.edux-list{background:var(--surface);border-radius:var(--radius-l);padding:12px 36px}
+.edux-row{display:grid;grid-template-columns:150px 28px 1fr auto;gap:28px;align-items:center;padding:30px 0;border-bottom:1px solid var(--line)}
+.edux-row:last-child{border-bottom:0}
+.edux-years{font:800 clamp(26px,2.6vw,34px)/1 var(--display);letter-spacing:-.04em}
+.edux-years small{display:block;margin-top:6px;font:500 13px var(--body);letter-spacing:0;color:var(--muted)}
+.edux-dot{justify-self:center;width:9px;height:9px;border-radius:50%;background:var(--ink);box-shadow:0 0 0 4px color-mix(in srgb,var(--ink) 12%,transparent);transition:box-shadow .3s}
+.edux-row:hover .edux-dot{box-shadow:0 0 0 5px color-mix(in srgb,var(--ink) 16%,transparent)}
+.edux-body h3{margin:0 0 6px;font:800 clamp(24px,2.4vw,32px)/1 var(--display);letter-spacing:-.035em}
+.edux-body p{margin:0 0 14px;color:var(--muted);font-size:15px}
+.edux-inst{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:color .3s,background-size .4s}
+.edux-inst::after{content:"↗";font-size:13px;opacity:.6}
+.edux-inst:hover{color:var(--ink);background-size:100% 1px}
+.edux-tags{display:flex;flex-wrap:wrap;gap:8px}
+.edux-tags span{padding:6px 13px;border-radius:999px;background:var(--surface-2);font-size:13px;font-weight:500}
+.edux-tags span:first-child{background:var(--invert-bg);color:var(--invert-ink)}
+.edux-arrow{width:52px;height:52px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:transform .45s cubic-bezier(.2,.8,.2,1),background .3s,color .3s,border-color .3s}
+.edux-arrow svg{width:20px;height:20px}
+.edux-row:hover .edux-arrow{background:var(--invert-bg);color:var(--invert-ink);border-color:transparent;transform:rotate(-45deg)}
+.edux-arrow:focus-visible,.edux-inst:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.edux-reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.edux-reveal.show{opacity:1;transform:none}
+@media (max-width:1000px){
+  .edux-row{grid-template-columns:120px 20px 1fr;gap:20px}
+  .edux-arrow{display:none}
+}
+@media (max-width:680px){
+  .edux-list{padding:6px 22px}
+  .edux-row{grid-template-columns:20px 1fr;gap:14px 16px;padding:26px 0}
+  .edux-dot{grid-row:1;grid-column:1}
+  .edux-years{grid-row:1;grid-column:2}
+  .edux-body{grid-column:1/-1}
+}
+</style>
 </head>
 <body>
 
@@ -532,6 +567,39 @@ body.dark .lp-rail i::after{background:#f1f1ec}
     </div>
   </div>
 </section>
+
+<!-- ===== EDUCATION ===== -->
+<section class="section wrap" id="education">
+  <div class="sec-head">
+    <h2 class="words in"><span class="wd"><span>Education</span></span></h2>
+    <p class="in">Formal training in graphic design that shaped my eye for layout, typography and visual systems — the foundation of my UI/UX work today.</p>
+  </div>
+
+  <div class="edux-list edux-reveal">
+    <article class="edux-row">
+      <div class="edux-years">2019–20<small>Diploma</small></div>
+      <span class="edux-dot" aria-hidden="true"></span>
+      <div class="edux-body">
+        <h3>Diploma in Engineering</h3>
+        <p><a class="edux-inst" href="https://gai.polytech.gov.bd/" target="_blank" rel="noopener">Govt. Graphic Arts Institute</a></p>
+        <div class="edux-tags"><span>Graphic Design</span><span>Typography</span><span>Print &amp; Layout</span></div>
+      </div>
+      <a class="edux-arrow" href="https://gai.polytech.gov.bd/" target="_blank" rel="noopener" aria-label="Visit Govt. Graphic Arts Institute website"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </article>
+
+    <article class="edux-row">
+      <div class="edux-years">2014–19<small>SSC</small></div>
+      <span class="edux-dot" aria-hidden="true"></span>
+      <div class="edux-body">
+        <h3>Secondary School Certificate</h3>
+        <p><a class="edux-inst" href="https://deoparaup.tangail.gov.bd/pages/photo-galleries/%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A6%A6%E0%A6%A4%E0%A7%8D%E0%A6%A4-%E0%A6%97%E0%A6%A3-%E0%A6%89%E0%A6%9A%E0%A7%8D%E0%A6%9A-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F-012e15-6995642bc4774958d7c840bc" target="_blank" rel="noopener">Bhabandatto Gon High School</a></p>
+        <div class="edux-tags"><span>Electrical</span><span>Vocational</span></div>
+      </div>
+      <a class="edux-arrow" href="https://deoparaup.tangail.gov.bd/pages/photo-galleries/%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A6%A6%E0%A6%A4%E0%A7%8D%E0%A6%A4-%E0%A6%97%E0%A6%A3-%E0%A6%89%E0%A6%9A%E0%A7%8D%E0%A6%9A-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F-012e15-6995642bc4774958d7c840bc" target="_blank" rel="noopener" aria-label="Visit Bhabandatto Gon High School page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </article>
+  </div>
+</section>
+
 <section class="gallery" aria-label="More shots">
   <div class="gal-row" data-dir="left"><div class="gal-track"><div class="gal-set"><a class="g" href="https://www.behance.net/shakibadnan" target="_blank" rel="noopener" title="Personal Portfolio Website UI"><img data-shot="0" alt="Personal Portfolio Website UI"></a><a class="g" href="https://www.behance.net/shakibadnan" target="_blank" rel="noopener" title="Portfolio Landing Page"><img data-shot="1" alt="Portfolio Landing Page"></a><a class="g" href="https://www.behance.net/shakibadnan" target="_blank" rel="noopener" title="Solving Modern Problems"><img data-shot="2" alt="Solving Modern Problems"></a><a class="g" href="https://www.behance.net/shakibadnan" target="_blank" rel="noopener" title="Creative Designer Portfolio"><img data-shot="3" alt="Creative Designer Portfolio"></a></div></div></div>
   <div class="gal-row" data-dir="right"><div class="gal-track"><div class="gal-set"><a class="g" href="https://www.behance.net/shakibadnan" target="_blank" rel="noopener" title="Solving Modern Problems"><img data-shot="2" alt="Solving Modern Problems"></a><a class="g" href="https://www.behance.net/shakibadnan" target="_blank" rel="noopener" title="Creative Designer Portfolio"><img data-shot="3" alt="Creative Designer Portfolio"></a><a class="g" href="https://www.behance.net/shakibadnan" target="_blank" rel="noopener" title="Personal Portfolio Website UI"><img data-shot="0" alt="Personal Portfolio Website UI"></a><a class="g" href="https://www.behance.net/shakibadnan" target="_blank" rel="noopener" title="Portfolio Landing Page"><img data-shot="1" alt="Portfolio Landing Page"></a></div></div></div>
@@ -768,6 +836,12 @@ body.dark .lp-rail i::after{background:#f1f1ec}
     note.textContent = 'Your email app should open now. If it doesn’t, email shakibadnan503@gmail.com directly.';
   });
 })();
+</script>
+<script>
+(()=>{const els=document.querySelectorAll('.edux-reveal');
+if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('show'));return}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.15});
+els.forEach(e=>io.observe(e))})();
 </script>
 </body>
 </html>
