@@ -48,18 +48,22 @@ img{max-width:100%;display:block}
 .wrap{width:min(1240px,calc(100% - 40px));margin-inline:auto}
 
 /* ---------- Floating nav ---------- */
-.dock{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:50;display:flex;align-items:center;gap:6px;padding:6px;background:color-mix(in srgb,var(--surface) 82%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:999px;box-shadow:0 8px 30px rgb(0 0 0 / .06)}
-.dock .me{width:40px;height:40px;border-radius:50%;overflow:hidden;flex:none}
-.dock .me img{width:100%;height:100%;object-fit:cover;object-position:50% 0;transform:scale(2.6);transform-origin:50% 1%}
-.dock nav{display:flex}
+.dock{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:50;display:flex;width:max-content;max-width:calc(100% - 32px);align-items:center;gap:6px;padding:6px;background:color-mix(in srgb,var(--surface) 82%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:999px;box-shadow:0 8px 30px rgb(0 0 0 / .06)}
+.dock .logo{display:flex;align-items:center;padding:0 10px 0 12px;flex:none}
+.dock .logo img{height:20px;width:auto;display:block;position:relative;top:2px}
+body.dark .dock .logo img{filter:invert(1)}
+.dock nav{display:flex;position:relative;top:3px}
+.dock-actions{display:flex;align-items:center;gap:6px}
 .dock nav a{padding:9px 14px;border-radius:999px;font-size:14px;font-weight:500;color:var(--muted);transition:background .2s,color .2s}
 .dock nav a:hover{color:var(--ink);background:var(--surface-2)}
-.theme-toggle{width:40px;height:40px;border-radius:50%;border:0;background:var(--surface-2);color:var(--ink);font-size:16px;cursor:pointer}
+.theme-toggle{width:40px;height:40px;border-radius:50%;border:0;padding:0 0 4px;background:var(--surface-2);color:var(--ink);font-size:16px;cursor:pointer}
 .status{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:var(--invert-bg);color:var(--invert-ink);font-size:13px;font-weight:600;white-space:nowrap}
 .status .short{display:none}
-.cv-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 15px;border-radius:999px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink);font-size:13px;font-weight:600;white-space:nowrap;transition:background .2s,border-color .2s}
-.cv-btn:hover{border-color:var(--ink)}
+.cv-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 15px;border-radius:999px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink);font-size:13px;font-weight:600;white-space:nowrap;transition:transform .2s,background .2s,border-color .2s}
+.cv-btn:hover{border-color:var(--ink);transform:translateY(-2px)}
 .cv-btn svg{width:15px;height:15px;flex:none}
+body.dark .cv-btn{background:var(--invert-bg);color:var(--invert-ink);border-color:var(--invert-bg)}
+body.dark .cv-btn:hover{border-color:var(--invert-bg)}
 .pulse{width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 0 rgb(200 241 105 / .7);animation:pulse 2s infinite}
 @keyframes pulse{70%{box-shadow:0 0 0 8px rgb(200 241 105 / 0)}100%{box-shadow:0 0 0 0 rgb(200 241 105 / 0)}}
 
@@ -94,7 +98,7 @@ img{max-width:100%;display:block}
 /* ---------- Sections ---------- */
 .section{padding:110px 0}
 .sec-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:56px}
-.sec-head h2{margin:0;font:800 clamp(44px,7vw,96px)/.9 var(--display);letter-spacing:-.05em;text-transform:lowercase}
+.sec-head h2{margin:0;font:800 clamp(44px,7vw,96px)/.9 var(--display);letter-spacing:-.05em;text-transform:capitalize}
 .sec-head p{margin:0;max-width:420px;justify-self:end;color:var(--muted)}
 
 /* Services: infinite card ticker */
@@ -114,7 +118,7 @@ img{max-width:100%;display:block}
 /* About */
 .about{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}
 .about-card{background:var(--surface);border-radius:var(--radius-l);padding:48px}
-.about-card h2{margin:0 0 22px;font:800 clamp(40px,5vw,72px)/.9 var(--display);letter-spacing:-.05em;text-transform:lowercase}
+.about-card h2{margin:0 0 22px;font:800 clamp(40px,5vw,72px)/.9 var(--display);letter-spacing:-.05em;text-transform:capitalize}
 .about-card .lead{color:var(--ink);font:500 clamp(20px,2vw,26px)/1.35 var(--display);letter-spacing:-.01em;margin:0 0 18px;max-width:30ch}
 .about-card p{color:var(--muted);max-width:52ch}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
@@ -184,7 +188,7 @@ img{max-width:100%;display:block}
 .contact .face .ring{width:100%;height:100%;border-radius:50%;overflow:hidden}
 .contact .face img{width:100%;height:100%;object-fit:cover;object-position:50% 0;transform:scale(2.6);transform-origin:50% 1%}
 .contact .face .bubble{font-size:15px;padding:9px 12px;top:-10px;right:-38px;border-radius:16px 16px 16px 4px}
-.contact h2{margin:0;font:800 clamp(48px,7vw,96px)/.88 var(--display);letter-spacing:-.05em;text-transform:lowercase}
+.contact h2{margin:0;font:800 clamp(48px,7vw,96px)/.88 var(--display);letter-spacing:-.05em;text-transform:capitalize}
 .contact .sub{color:color-mix(in srgb,var(--invert-ink) 65%,transparent);max-width:40ch;margin:22px 0 32px}
 .contact dl{margin:0;display:grid;gap:18px}
 .contact dt{font-size:13px;color:color-mix(in srgb,var(--invert-ink) 55%,transparent)}
@@ -301,24 +305,130 @@ footer nav a:hover{color:var(--ink)}
   .about-side{gap:12px}
   .stat{padding:20px;min-height:140px}
 }
+
+/* Header tweaks */
+.cv-btn{background:#1c1c1a;color:#fff;border-color:#1c1c1a;}
+.cv-btn:hover{background:#000;border-color:#000;}
+.theme-toggle{display:inline-flex;align-items:center;justify-content:center;}
+.theme-toggle svg{color:#8a8a85;transform:translateY(2px);}
+/* ---------- Live projects: sticky stacked cards ---------- */
+.lp{padding:110px 0 0}
+.lp-top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;margin-bottom:24px}
+.lp-title{margin:0;display:flex;align-items:flex-start;gap:14px;font:800 clamp(44px,7vw,96px)/.9 var(--display);letter-spacing:-.05em}
+.lp-title .num{font-size:1.9em;line-height:.8;color:var(--ink)}
+.lp-label{display:inline-flex;align-items:center;gap:10px;margin-top:12px;font-size:14px;font-weight:600;color:var(--muted);white-space:nowrap}
+.lp-label::before,.lp-label::after{content:"";width:6px;height:6px;background:var(--lime);border-radius:1px}
+.lp-sub{margin:0;max-width:420px;color:var(--muted)}
+.lp-scroll{position:relative;height:calc(var(--n,5) * 85vh + 30vh)}
+.lp-stage{position:sticky;top:0;height:100vh;display:grid;place-items:center;perspective:1400px;overflow:hidden}
+.lp-rail{position:absolute;left:0;top:50%;height:240px;width:2px;transform:translateY(-50%);background:var(--line);border-radius:2px}
+.lp-rail i{position:absolute;left:50%;top:0;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;border:1px solid var(--line);background:var(--bg);display:grid;place-items:center}
+.lp-rail i::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 0 rgb(200 241 105 / .7);animation:pulse 2s infinite}
+.lp-count{position:absolute;right:0;top:50%;transform:translateY(-50%) rotate(90deg);transform-origin:right center;font-size:13px;font-weight:600;color:var(--muted);letter-spacing:.08em;white-space:nowrap}
+.lp-cards{position:relative;width:min(900px,calc(100% - 80px));height:min(600px,74vh)}
+.lp-card{--c:#ACFFAE;position:absolute;inset:0;background:var(--c);color:#fff;border-radius:28px;padding:clamp(24px,3.4vw,44px);display:grid;grid-template-columns:1fr 1.05fr;grid-template-rows:auto 1fr;gap:20px 28px;overflow:hidden;transform-origin:50% 100%;will-change:transform;box-shadow:0 -10px 40px -20px rgb(0 0 0 / .35)}
+.lp-card .hd{grid-column:1/-1}
+.lp-card h3{margin:0 0 14px;font:700 clamp(28px,3.6vw,46px)/1 var(--display);letter-spacing:-.035em;max-width:20ch}
+.lp-card .hd p{margin:0;max-width:46ch;font-size:15px;line-height:1.55;color:rgb(28 28 26 / .85)}
+.lp-card .ft{align-self:end;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.lp-pill{padding:8px 14px;border-radius:999px;background:#0e0e0d;color:#fff;font-size:14px;font-weight:600}
+.lp-go{margin-top:12px;display:inline-flex;align-items:center;gap:8px;padding:13px 20px;border-radius:999px;background:#fff;color:#141413;font:600 14px/1 var(--body);transition:transform .25s,gap .25s}
+.lp-go:hover{transform:translateY(-2px);gap:12px}
+.lp-shots{align-self:end;height:min(230px,30vh);margin-right:calc(-1 * clamp(24px,3.4vw,44px));overflow:hidden;border-radius:18px 0 0 18px}
+.lp-belt{display:flex;gap:12px;height:100%;width:max-content;animation:ticker 26s linear infinite}
+.lp-card:nth-child(even) .lp-belt{animation-direction:reverse}
+.lp-belt a{flex:none;height:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:rgb(255 255 255 / .14)}
+.lp-belt img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.lp-belt a:hover img{transform:scale(1.06)}
+.lp-shots:hover .lp-belt{animation-play-state:paused}
+@media (max-width:900px){
+  .lp{padding-top:80px}
+  .lp-top{flex-direction:column;gap:10px}
+  .lp-rail,.lp-count{display:none}
+  .lp-cards{width:100%;height:min(640px,80vh)}
+  .lp-card{grid-template-columns:1fr;grid-template-rows:auto 1fr auto;border-radius:24px}
+  .lp-card .hd p{font-size:14px}
+  .lp-card .ft{flex-direction:row;flex-wrap:wrap;align-items:center}
+  .lp-go{margin-top:4px}
+  .lp-shots{height:170px;align-self:end;margin-inline:calc(-1 * clamp(24px,3.4vw,44px));border-radius:0}
+}
+@media (prefers-reduced-motion:reduce){
+  .lp-scroll{height:auto}
+  .lp-stage{position:static;height:auto;display:block;perspective:none;overflow:visible}
+  .lp-rail,.lp-count{display:none}
+  .lp-cards{height:auto;width:100%;display:grid;gap:24px}
+  .lp-card{position:relative;inset:auto;min-height:520px;transform:none!important}
+  .lp-belt{animation:none}.lp-shots{overflow-x:auto}
+}
+
+/* ---- Live Projects fixes ---- */
+html,body{overflow-x:clip}
+.lp-card{color:#0B0B0B}
+.lp-card h3,.lp-card p,.lp-card .lp-go{color:#0B0B0B}
+.lp-card .lp-pill{color:#fff}
+.lp-card .lp-belt a{background:rgba(0,0,0,.08)}
+.lp-card .lp-shots{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%)}
+.lp-stage .lp-count{transform:translateY(-50%);right:24px;font-size:15px;color:var(--ink);letter-spacing:.06em;font-variant-numeric:tabular-nums}
+
+/* --- Live Project fixes --- */
+.lp-stage{padding-top:80px;padding-bottom:130px;box-sizing:border-box}
+.lp-cards{height:min(560px,calc(100vh - 240px))}
+.lp-rail{left:12px}
+.lp-rail i::after{background:#1c1c1a;box-shadow:none}
+body.dark .lp-rail i::after{background:#f1f1ec}
+@media (max-width:900px){.lp-stage{padding-top:70px;padding-bottom:40px}.lp-cards{height:min(640px,calc(100vh - 140px))}}
+</style>
+<!-- Education section styles -->
+<style>
+.edux-list{background:var(--surface);border-radius:var(--radius-l);padding:12px 36px}
+.edux-row{display:grid;grid-template-columns:150px 28px 1fr auto;gap:28px;align-items:center;padding:30px 0;border-bottom:1px solid var(--line)}
+.edux-row:last-child{border-bottom:0}
+.edux-years{font:800 clamp(26px,2.6vw,34px)/1 var(--display);letter-spacing:-.04em}
+.edux-years small{display:block;margin-top:6px;font:500 13px var(--body);letter-spacing:0;color:var(--muted)}
+.edux-dot{justify-self:center;width:9px;height:9px;border-radius:50%;background:var(--ink);box-shadow:0 0 0 4px color-mix(in srgb,var(--ink) 12%,transparent);transition:box-shadow .3s}
+.edux-row:hover .edux-dot{box-shadow:0 0 0 5px color-mix(in srgb,var(--ink) 16%,transparent)}
+.edux-body h3{margin:0 0 6px;font:800 clamp(24px,2.4vw,32px)/1 var(--display);letter-spacing:-.035em}
+.edux-body p{margin:0 0 14px;color:var(--muted);font-size:15px}
+.edux-inst{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:color .3s,background-size .4s}
+.edux-inst::after{content:"↗";font-size:13px;opacity:.6}
+.edux-inst:hover{color:var(--ink);background-size:100% 1px}
+.edux-tags{display:flex;flex-wrap:wrap;gap:8px}
+.edux-tags span{padding:6px 13px;border-radius:999px;background:var(--surface-2);font-size:13px;font-weight:500}
+.edux-tags span:first-child{background:var(--invert-bg);color:var(--invert-ink)}
+.edux-arrow{width:52px;height:52px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:transform .45s cubic-bezier(.2,.8,.2,1),background .3s,color .3s,border-color .3s}
+.edux-arrow svg{width:20px;height:20px}
+.edux-row:hover .edux-arrow{background:var(--invert-bg);color:var(--invert-ink);border-color:transparent;transform:rotate(-45deg)}
+.edux-arrow:focus-visible,.edux-inst:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.edux-reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.edux-reveal.show{opacity:1;transform:none}
+@media (max-width:1000px){
+  .edux-row{grid-template-columns:120px 20px 1fr;gap:20px}
+  .edux-arrow{display:none}
+}
+@media (max-width:680px){
+  .edux-list{padding:6px 22px}
+  .edux-row{grid-template-columns:20px 1fr;gap:14px 16px;padding:26px 0}
+  .edux-dot{grid-row:1;grid-column:1}
+  .edux-years{grid-row:1;grid-column:2}
+  .edux-body{grid-column:1/-1}
+}
 </style>
 </head>
 <body>
 
 <header class="dock" aria-label="Main">
-  <a class="me" href="#top" aria-label="Back to top"><img data-photo alt=""></a>
+  <a class="logo" href="#top" aria-label="Sakib — back to top"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAAAaCAYAAAAUqxq7AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAA6NJREFUeAHtWe110zAUvYcFyAZoA7IBZoJ2A2uDphNYTNBsYDNBygTuBoYJHCZImaD4pXKRn64kp8C/3nNe2/h9f/jJToE0qonaifqJDhPVuAzG67X+7xLuJhpWyFeB3EZdH/Ecb01iaX08g5d7CmjABTluvPAToQbrkhXYQG/EMhmGfqV8mJxL+BPaBbwKPB9Go5enkKCGFQZKyQquMwEz9EreEhmLuPMp3knpOqwvklBN/KMjghK4niiHPBrEY9wWdPqCD0Ns9gHfIY5dN3Ig+hLXHjz3bahsicDB87oLkjXgHemRR6lAHfJddigXaER+SjV//y5IqlHCx4lu/d+fFO8X0rjG62AyPIt45I8TfUUejwUfhtgM8XEuUEWEnVfYEt490rhJXDe4DI+BXkP4n//SPsNWff4xF4hNz9ydDeE9gMMiHeiaxR5iLtCB2LxF3O33Cf0ZBnlYxDGe10KF+N4Nd4wonbBu//TInwy5ImnZCs/PRvq6W+l7VPwtsWU9zyDePy/6u4ziDKsCZzDgSz78bJAGW+r6WpfR1yfUoPgVeBMAfgC87FKHdV2SDuyRRqdsyJ6y6tpVQneD/OTNxc5hRFzgEBV4gRoU8reJgETRYD10gFIMPdY2oWuQL45MQ2mHsQkMYVGecDocG5JcSC0yj94e+ql5DGxnnXtsM/5HrFvwLO4QO+SbcAJ5RJFTTLa9HJlH7vdc+d4HahIy2rDzvx+V3Q9cPVuADcqTzPg/iZ0SGhReli3K72I14uC0jAl4PZZdqonfquAz1xwBm0CnZPYFH2zFnFEjDlocdkiPYtiNG8IfsHw0KCVsVwSc20MVkbdKpiNxVl7Oga+Zc13G8IOCSSheeeO5IpSoDfzsSPCO6NxhfYH0idkrfk/s6Hzad/jTyc4HYAKF40TfwPEdr0M30Rcs36M2xLZD/K61A//axJBrufdFDfF/hziOB/mhJ0SqKN298cQmyHgDjujK0bn3utdeNuwMS7BDursd8V8pfUtk9HvVgfhokH7672bF0vGXuzVcIfAZfUI/FYOW6RA3wgT8isSpp4HJpChqolupeFCOw8RGpFGS0+97jsh0KpYRy1jC0/cEDoP83myROS2FIbdGHxg5+UBEsUro5CYjxHzM6sRCW72XqRM2OsQNm7HxfLE/IA3j5eYv78XGDS7/tmE1ZM/0SH8P9K/RYVmkBm9YgP1jocYbFphvp3DnbPGGCHJ7yw6RAt3jP+A3OhG04nZpCV0AAAAASUVORK5CYII=" alt="Sakib"></a>
   <nav>
     <a href="#services">Services</a>
     <a href="#about">About</a>
+    <a href="#live">Projects</a>
     <a href="#work">Work</a>
     <a href="#faq">FAQ</a>
   </nav>
-  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode">☾</button>
-  <a class="cv-btn" href="https://dev-yasirarafat.newisty.com/assets/pdf/cv/Yasir_Arafat_CV_Software_Developer.pdf?v=1793607127"><b>Resume <i class="fas fa-file-pdf" aria-label="Download CV"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg><span class="label">Download CV</span></a>
-  <a class="status" href="#contact"><span class="pulse"></span><span class="long">Available for work</span><span class="short">Available</span></a>
-
-
-                </li>
+  <div class="dock-actions">
+  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+  <a class="cv-btn" href="Muhammad%20Sakib.pdf" download="Muhammad_Sakib_CV.pdf" aria-label="Download CV"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg><span class="label roll"><span>Download CV</span><span aria-hidden="true">Download CV</span></span></a>
+  </div>
 </header>
 
 <main id="top">
@@ -384,6 +494,8 @@ footer nav a:hover{color:var(--ink)}
   </div>
 </section>
 
+
+
 <section class="section wrap" id="work">
   <div class="sec-head">
     <h2>Featured work</h2>
@@ -413,6 +525,81 @@ footer nav a:hover{color:var(--ink)}
   </div>
   <div class="more"><a class="btn ghost" href="https://www.behance.net/shakibadnan" target="_blank" rel="noopener">See all projects on Behance</a></div>
 </section>
+
+<section class="lp wrap" id="live" aria-label="Live projects">
+  <div class="lp-top">
+    <div>
+      <h2 class="lp-title">Live Project</h2>
+    </div>
+  </div>
+  <p class="lp-sub">Products I designed that are live and selling on CodeCanyon. Click any card to see the live listing.</p>
+  <div class="lp-scroll" style="--n:5">
+    <div class="lp-stage">
+      <div class="lp-rail" aria-hidden="true"><i></i></div>
+      <div class="lp-cards">
+      <article class="lp-card" style="--c:#ACFFAE">
+        <div class="hd"><h3>Xanzu — AI-Powered BNPL App</h3><p>A Flutter “Buy Now, Pay Later” and EMI platform with a customer app, merchant panel and admin dashboard — smart credit limits, a virtual card and AI product search.</p></div>
+        <div class="ft"><span class="lp-pill">BNPL &amp; EMI</span><span class="lp-pill">Mobile App</span><span class="lp-pill">Merchant Panel</span><a class="lp-go" href="https://codecanyon.net/item/xanzu-aipowered-bnpl-app/63524016" target="_blank" rel="noopener">View live project <span aria-hidden="true">↗</span></a></div>
+        <div class="lp-shots"><div class="lp-belt"><a href="https://codecanyon.net/item/xanzu-aipowered-bnpl-app/63524016" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953701/A.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/xanzu-aipowered-bnpl-app/63524016" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953701/B.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/xanzu-aipowered-bnpl-app/63524016" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953701/C.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/xanzu-aipowered-bnpl-app/63524016" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953701/D.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/xanzu-aipowered-bnpl-app/63524016" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953701/E.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/xanzu-aipowered-bnpl-app/63524016" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953701/A.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/xanzu-aipowered-bnpl-app/63524016" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953701/B.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/xanzu-aipowered-bnpl-app/63524016" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953701/C.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/xanzu-aipowered-bnpl-app/63524016" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953701/D.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/xanzu-aipowered-bnpl-app/63524016" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953701/E.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a></div></div>
+      </article>
+      <article class="lp-card" style="--c:#BAE5FF">
+        <div class="hd"><h3>Qunzo — Fintech Wallet App</h3><p>A ready-to-launch digital wallet with separate user, agent and merchant modules, multi-currency wallets and 25+ payment gateways, all run from one admin panel.</p></div>
+        <div class="ft"><span class="lp-pill">Digital Wallet</span><span class="lp-pill">Multi-currency</span><span class="lp-pill">Admin Panel</span><a class="lp-go" href="https://codecanyon.net/item/qunzo-fintech-wallet-app-with-user-agent-and-merchant-modules-including-admin-panel/60706576" target="_blank" rel="noopener">View live project <span aria-hidden="true">↗</span></a></div>
+        <div class="lp-shots"><div class="lp-belt"><a href="https://codecanyon.net/item/qunzo-fintech-wallet-app-with-user-agent-and-merchant-modules-including-admin-panel/60706576" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/817998500/A.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/qunzo-fintech-wallet-app-with-user-agent-and-merchant-modules-including-admin-panel/60706576" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/817998500/B.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/qunzo-fintech-wallet-app-with-user-agent-and-merchant-modules-including-admin-panel/60706576" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/817998500/C.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/qunzo-fintech-wallet-app-with-user-agent-and-merchant-modules-including-admin-panel/60706576" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/817998500/D.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/qunzo-fintech-wallet-app-with-user-agent-and-merchant-modules-including-admin-panel/60706576" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/817998500/E.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/qunzo-fintech-wallet-app-with-user-agent-and-merchant-modules-including-admin-panel/60706576" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/817998500/A.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/qunzo-fintech-wallet-app-with-user-agent-and-merchant-modules-including-admin-panel/60706576" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/817998500/B.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/qunzo-fintech-wallet-app-with-user-agent-and-merchant-modules-including-admin-panel/60706576" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/817998500/C.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/qunzo-fintech-wallet-app-with-user-agent-and-merchant-modules-including-admin-panel/60706576" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/817998500/D.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/qunzo-fintech-wallet-app-with-user-agent-and-merchant-modules-including-admin-panel/60706576" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/817998500/E.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a></div></div>
+      </article>
+      <article class="lp-card" style="--c:#E1FFB9">
+        <div class="hd"><h3>Flexefy — AI Money Transfer App</h3><p>A remittance app and web platform with an AI voice assistant for sending money, AI fraud and risk detection, scheduled transfers and an agent module.</p></div>
+        <div class="ft"><span class="lp-pill">Remittance</span><span class="lp-pill">AI Fraud Detection</span><span class="lp-pill">Agent Module</span><a class="lp-go" href="https://codecanyon.net/item/flexefy-ai-powered-money-transfer-app-with-fraud-detection-including-agent-module/62734178" target="_blank" rel="noopener">View live project <span aria-hidden="true">↗</span></a></div>
+        <div class="lp-shots"><div class="lp-belt"><a href="https://codecanyon.net/item/flexefy-ai-powered-money-transfer-app-with-fraud-detection-including-agent-module/62734178" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953466/A.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/flexefy-ai-powered-money-transfer-app-with-fraud-detection-including-agent-module/62734178" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953466/B.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/flexefy-ai-powered-money-transfer-app-with-fraud-detection-including-agent-module/62734178" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953466/C.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/flexefy-ai-powered-money-transfer-app-with-fraud-detection-including-agent-module/62734178" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953466/D.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/flexefy-ai-powered-money-transfer-app-with-fraud-detection-including-agent-module/62734178" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953466/E.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/flexefy-ai-powered-money-transfer-app-with-fraud-detection-including-agent-module/62734178" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953466/A.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/flexefy-ai-powered-money-transfer-app-with-fraud-detection-including-agent-module/62734178" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953466/B.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/flexefy-ai-powered-money-transfer-app-with-fraud-detection-including-agent-module/62734178" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953466/C.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/flexefy-ai-powered-money-transfer-app-with-fraud-detection-including-agent-module/62734178" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953466/D.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/flexefy-ai-powered-money-transfer-app-with-fraud-detection-including-agent-module/62734178" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953466/E.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a></div></div>
+      </article>
+      <article class="lp-card" style="--c:#FFB4B3">
+        <div class="hd"><h3>Gamkon — Digital ID Marketplace</h3><p>A subscription-based multi-vendor marketplace for buying and selling game, streaming and software accounts, with buyer and seller modules and auto delivery.</p></div>
+        <div class="ft"><span class="lp-pill">Marketplace</span><span class="lp-pill">Buyer &amp; Seller</span><span class="lp-pill">Subscriptions</span><a class="lp-go" href="https://codecanyon.net/item/gamkon-on-demand-subscription-based-digital-id-selling-marketplace-with-buyer-and-seller-module/59577555" target="_blank" rel="noopener">View live project <span aria-hidden="true">↗</span></a></div>
+        <div class="lp-shots"><div class="lp-belt"><a href="https://codecanyon.net/item/gamkon-on-demand-subscription-based-digital-id-selling-marketplace-with-buyer-and-seller-module/59577555" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953502/A.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/gamkon-on-demand-subscription-based-digital-id-selling-marketplace-with-buyer-and-seller-module/59577555" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953502/B.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/gamkon-on-demand-subscription-based-digital-id-selling-marketplace-with-buyer-and-seller-module/59577555" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953502/C.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/gamkon-on-demand-subscription-based-digital-id-selling-marketplace-with-buyer-and-seller-module/59577555" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953502/D.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/gamkon-on-demand-subscription-based-digital-id-selling-marketplace-with-buyer-and-seller-module/59577555" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953502/E.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/gamkon-on-demand-subscription-based-digital-id-selling-marketplace-with-buyer-and-seller-module/59577555" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953502/A.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/gamkon-on-demand-subscription-based-digital-id-selling-marketplace-with-buyer-and-seller-module/59577555" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953502/B.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/gamkon-on-demand-subscription-based-digital-id-selling-marketplace-with-buyer-and-seller-module/59577555" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953502/C.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/gamkon-on-demand-subscription-based-digital-id-selling-marketplace-with-buyer-and-seller-module/59577555" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953502/D.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/gamkon-on-demand-subscription-based-digital-id-selling-marketplace-with-buyer-and-seller-module/59577555" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825953502/E.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a></div></div>
+      </article>
+      <article class="lp-card" style="--c:#ACFFAE">
+        <div class="hd"><h3>Escrova — Escrow &amp; Bidding Platform</h3><p>An escrow marketplace for business flipping, auctions and bidding — funds held until work is approved, milestone payments and built-in dispute resolution.</p></div>
+        <div class="ft"><span class="lp-pill">Escrow</span><span class="lp-pill">Auction &amp; Bidding</span><span class="lp-pill">Milestones</span><a class="lp-go" href="https://codecanyon.net/item/escrova-independent-trust-hold-marketplace-for-business-flipping-auction-and-bidding-platform/61039939" target="_blank" rel="noopener">View live project <span aria-hidden="true">↗</span></a></div>
+        <div class="lp-shots"><div class="lp-belt"><a href="https://codecanyon.net/item/escrova-independent-trust-hold-marketplace-for-business-flipping-auction-and-bidding-platform/61039939" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825952687/A.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/escrova-independent-trust-hold-marketplace-for-business-flipping-auction-and-bidding-platform/61039939" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825952687/B.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/escrova-independent-trust-hold-marketplace-for-business-flipping-auction-and-bidding-platform/61039939" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825952687/C.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/escrova-independent-trust-hold-marketplace-for-business-flipping-auction-and-bidding-platform/61039939" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825952687/D.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/escrova-independent-trust-hold-marketplace-for-business-flipping-auction-and-bidding-platform/61039939" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825952687/E.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/escrova-independent-trust-hold-marketplace-for-business-flipping-auction-and-bidding-platform/61039939" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825952687/A.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/escrova-independent-trust-hold-marketplace-for-business-flipping-auction-and-bidding-platform/61039939" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825952687/B.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/escrova-independent-trust-hold-marketplace-for-business-flipping-auction-and-bidding-platform/61039939" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825952687/C.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/escrova-independent-trust-hold-marketplace-for-business-flipping-auction-and-bidding-platform/61039939" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825952687/D.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a><a href="https://codecanyon.net/item/escrova-independent-trust-hold-marketplace-for-business-flipping-auction-and-bidding-platform/61039939" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://s3.envato.com/files/825952687/E.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></a></div></div>
+      </article>
+      </div>
+      <span class="lp-count" aria-hidden="true">01 / 05</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EDUCATION ===== -->
+<section class="section wrap" id="education">
+  <div class="sec-head">
+    <h2 class="words in"><span class="wd"><span>Education</span></span></h2>
+    <p class="in">Formal training in graphic design that shaped my eye for layout, typography and visual systems — the foundation of my UI/UX work today.</p>
+  </div>
+
+  <div class="edux-list edux-reveal">
+    <article class="edux-row">
+      <div class="edux-years">2019–20<small>Diploma</small></div>
+      <span class="edux-dot" aria-hidden="true"></span>
+      <div class="edux-body">
+        <h3>Diploma in Engineering</h3>
+        <p><a class="edux-inst" href="https://gai.polytech.gov.bd/" target="_blank" rel="noopener">Govt. Graphic Arts Institute</a></p>
+        <div class="edux-tags"><span>Graphic Design</span><span>Typography</span><span>Print &amp; Layout</span></div>
+      </div>
+      <a class="edux-arrow" href="https://gai.polytech.gov.bd/" target="_blank" rel="noopener" aria-label="Visit Govt. Graphic Arts Institute website"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </article>
+
+    <article class="edux-row">
+      <div class="edux-years">2014–19<small>SSC</small></div>
+      <span class="edux-dot" aria-hidden="true"></span>
+      <div class="edux-body">
+        <h3>Secondary School Certificate</h3>
+        <p><a class="edux-inst" href="https://deoparaup.tangail.gov.bd/pages/photo-galleries/%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A6%A6%E0%A6%A4%E0%A7%8D%E0%A6%A4-%E0%A6%97%E0%A6%A3-%E0%A6%89%E0%A6%9A%E0%A7%8D%E0%A6%9A-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F-012e15-6995642bc4774958d7c840bc" target="_blank" rel="noopener">Bhabandatto Gon High School</a></p>
+        <div class="edux-tags"><span>Electrical</span><span>Vocational</span></div>
+      </div>
+      <a class="edux-arrow" href="https://deoparaup.tangail.gov.bd/pages/photo-galleries/%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A6%A6%E0%A6%A4%E0%A7%8D%E0%A6%A4-%E0%A6%97%E0%A6%A3-%E0%A6%89%E0%A6%9A%E0%A7%8D%E0%A6%9A-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F-012e15-6995642bc4774958d7c840bc" target="_blank" rel="noopener" aria-label="Visit Bhabandatto Gon High School page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </article>
+  </div>
+</section>
+
 <section class="gallery" aria-label="More shots">
   <div class="gal-row" data-dir="left"><div class="gal-track"><div class="gal-set"><a class="g" href="https://www.behance.net/shakibadnan" target="_blank" rel="noopener" title="Personal Portfolio Website UI"><img data-shot="0" alt="Personal Portfolio Website UI"></a><a class="g" href="https://www.behance.net/shakibadnan" target="_blank" rel="noopener" title="Portfolio Landing Page"><img data-shot="1" alt="Portfolio Landing Page"></a><a class="g" href="https://www.behance.net/shakibadnan" target="_blank" rel="noopener" title="Solving Modern Problems"><img data-shot="2" alt="Solving Modern Problems"></a><a class="g" href="https://www.behance.net/shakibadnan" target="_blank" rel="noopener" title="Creative Designer Portfolio"><img data-shot="3" alt="Creative Designer Portfolio"></a></div></div></div>
   <div class="gal-row" data-dir="right"><div class="gal-track"><div class="gal-set"><a class="g" href="https://www.behance.net/shakibadnan" target="_blank" rel="noopener" title="Solving Modern Problems"><img data-shot="2" alt="Solving Modern Problems"></a><a class="g" href="https://www.behance.net/shakibadnan" target="_blank" rel="noopener" title="Creative Designer Portfolio"><img data-shot="3" alt="Creative Designer Portfolio"></a><a class="g" href="https://www.behance.net/shakibadnan" target="_blank" rel="noopener" title="Personal Portfolio Website UI"><img data-shot="0" alt="Personal Portfolio Website UI"></a><a class="g" href="https://www.behance.net/shakibadnan" target="_blank" rel="noopener" title="Portfolio Landing Page"><img data-shot="1" alt="Portfolio Landing Page"></a></div></div></div>
@@ -438,7 +625,7 @@ footer nav a:hover{color:var(--ink)}
 <section class="section wrap" id="contact">
   <div class="contact">
     <div>
-      <div class="face"><div class="ring"><img data-photo alt=""></div><span class="bubble" aria-hidden="true">Hi</span></div>
+      
       <h2>Let’s work together</h2>
       <p class="sub">Have an idea for a website or app? Tell me about it and I’ll get back to you.</p>
       <dl>
@@ -469,7 +656,7 @@ footer nav a:hover{color:var(--ink)}
 </main>
 
 <footer class="wrap">
-  <span>© 2026 Muhammad Sakib. Designed with purpose.</span>
+  <span>© 2026 Muhammad Sakib.</span>
   <nav>
     <a href="https://www.behance.net/shakibadnan" target="_blank" rel="noopener">Behance</a>
     <a href="https://www.linkedin.com/in/muhammad-sakib-a3581b293/" target="_blank" rel="noopener">LinkedIn</a>
@@ -485,9 +672,11 @@ footer nav a:hover{color:var(--ink)}
 
   // Theme toggle — starts from the system setting
   const btn = document.getElementById('themeToggle');
+  const MOON_ICON = '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  const SUN_ICON = '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>';
   const apply = dark => {
     document.body.classList.toggle('dark', dark);
-    btn.textContent = dark ? '☀' : '☾';
+    btn.innerHTML = dark ? SUN_ICON : MOON_ICON;
     btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
   };
   apply(window.matchMedia('(prefers-color-scheme: dark)').matches);
@@ -522,7 +711,7 @@ footer nav a:hover{color:var(--ink)}
   });
 
   // Fade-up-blur reveals, staggered within each group
-  const groups = ['.sec-head p', '.about-card .lead, .about-card > p, .chips', '.about-side > *', '.project', '.faq-list .q', '.gallery', '.contact dl, .contact .sub, .contact form', '#serviceMarquee', '.more'];
+  const groups = ['.sec-head p', '.about-card .lead, .about-card > p, .chips', '.about-side > *', '.project', '.faq-list .q', '.gallery', '.contact dl, .contact .sub, .contact form', '#serviceMarquee', '.more', '.lp-top, .lp-sub'];
   groups.forEach(sel => document.querySelectorAll(sel).forEach((el, i) => { el.dataset.reveal = ''; el.style.setProperty('--d', i % 4); }));
 
   if ('IntersectionObserver' in window) {
@@ -590,6 +779,47 @@ footer nav a:hover{color:var(--ink)}
     counters.forEach(c => io.observe(c));
   }
 
+
+  // Live projects: sticky stacked cards that peel away on scroll
+  (() => {
+    const scroller = document.querySelector('.lp-scroll');
+    if (!scroller || reduceMotion) return;
+    const cards = [...scroller.querySelectorAll('.lp-card')];
+    const dot = scroller.querySelector('.lp-rail i'), count = scroller.querySelector('.lp-count');
+    const n = cards.length;
+    let busy = false;
+    const render = () => {
+      busy = false;
+      const r = scroller.getBoundingClientRect();
+      const span = r.height - innerHeight;
+      const p = Math.min(Math.max(-r.top / span, 0), 1);
+      const t = p * (n - 1);               // 0 → n-1
+      cards.forEach((c, i) => {
+        const d = i - t;                    // <0 leaving, 0 front, >0 waiting behind
+        let tf, op = 1, fl = 'none';
+        if (d < 0) {
+          const k = Math.min(-d, 1);
+          tf = `translateY(${-k * 115}vh) scale(${1 + k * .18}) rotateX(${k * 16}deg)`;
+          fl = `blur(${k * 3}px)`;
+        } else {
+          const k = Math.min(d, 3);
+          tf = `translateY(${k * 34}px) scale(${1 - k * .07})`;
+          op = d > 2.6 ? Math.max(0, 3 - d) / .4 : 1;
+        }
+        c.style.transform = tf;
+        c.style.opacity = op;
+        c.style.filter = fl;
+        c.style.zIndex = n - i;
+        c.style.pointerEvents = Math.abs(d) < .5 ? 'auto' : 'none';
+      });
+      if (dot) dot.style.top = `${p * 100}%`;
+      if (count) count.textContent = `${String(Math.min(Math.round(t) + 1, n)).padStart(2, '0')} / ${String(n).padStart(2, '0')}`;
+    };
+    addEventListener('scroll', () => { if (!busy) { busy = true; requestAnimationFrame(render); } }, { passive: true });
+    addEventListener('resize', render);
+    render();
+  })();
+
   // Contact form → opens email app with the message filled in
   const form = document.getElementById('contactForm');
   const note = document.getElementById('formNote');
@@ -605,6 +835,83 @@ footer nav a:hover{color:var(--ink)}
     location.href = `mailto:shakibadnan503@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     note.textContent = 'Your email app should open now. If it doesn’t, email shakibadnan503@gmail.com directly.';
   });
+})();
+</script>
+<script>
+(()=>{const els=document.querySelectorAll('.edux-reveal');
+if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('show'));return}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.15});
+els.forEach(e=>io.observe(e))})();
+</script>
+<script>
+/* Smooth custom cursor (Hello Monday-style) */
+(function () {
+  if (window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
+  if (window.__hmCursor) return; window.__hmCursor = true;
+
+  const css = `
+  html.hm-cursor, html.hm-cursor * { cursor: none !important; }
+  .hm-dot, .hm-ring { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 99999;
+    border-radius: 50%; will-change: transform; mix-blend-mode: difference; }
+  .hm-dot { width: 8px; height: 8px; margin: -4px 0 0 -4px; background: #fff;
+    transition: opacity .2s, width .25s, height .25s, margin .25s; }
+  .hm-ring { width: 40px; height: 40px; margin: -20px 0 0 -20px; border: 1.5px solid #fff;
+    display: flex; align-items: center; justify-content: center;
+    transition: width .35s cubic-bezier(.22,1,.36,1), height .35s cubic-bezier(.22,1,.36,1),
+      margin .35s cubic-bezier(.22,1,.36,1), background .3s, border-color .3s, opacity .3s; }
+  .hm-ring span { font: 600 12px/1 system-ui, sans-serif; letter-spacing: .04em; color: #000;
+    opacity: 0; transform: scale(.6); transition: opacity .25s, transform .35s cubic-bezier(.22,1,.36,1); }
+  .hm-hover .hm-ring { width: 64px; height: 64px; margin: -32px 0 0 -32px; background: #fff; }
+  .hm-hover .hm-dot { opacity: 0; }
+  .hm-label .hm-ring { width: 96px; height: 96px; margin: -48px 0 0 -48px; background: #fff; mix-blend-mode: normal; }
+  .hm-label .hm-ring span { opacity: 1; transform: scale(1); }
+  .hm-text .hm-dot { width: 3px; height: 28px; margin: -14px 0 0 -1.5px; border-radius: 2px; }
+  .hm-text .hm-ring { opacity: 0; }
+  .hm-down .hm-ring { width: 28px; height: 28px; margin: -14px 0 0 -14px; }
+  .hm-hidden .hm-dot, .hm-hidden .hm-ring { opacity: 0; }`;
+  const style = document.createElement('style'); style.textContent = css; document.head.appendChild(style);
+
+  const wrap = document.createElement('div'); wrap.className = 'hm-wrap hm-hidden';
+  wrap.innerHTML = '<div class="hm-ring"><span><\/span><\/div><div class="hm-dot"><\/div>';
+  document.body.appendChild(wrap);
+  document.documentElement.classList.add('hm-cursor');
+  const ring = wrap.querySelector('.hm-ring'), dot = wrap.querySelector('.hm-dot'), label = ring.querySelector('span');
+
+  let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my, dx = mx, dy = my, vx = 0, vy = 0;
+
+  addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; wrap.classList.remove('hm-hidden'); }, { passive: true });
+  document.addEventListener('mouseleave', () => wrap.classList.add('hm-hidden'));
+  addEventListener('mousedown', () => wrap.classList.add('hm-down'));
+  addEventListener('mouseup', () => wrap.classList.remove('hm-down'));
+
+  const INTERACTIVE = 'a, button, [role="button"], input[type="submit"], label, select, .btn, [data-cursor]';
+  const TEXT = 'input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]), textarea, [contenteditable="true"]';
+  document.addEventListener('mouseover', e => {
+    const t = e.target;
+    wrap.classList.remove('hm-hover', 'hm-label', 'hm-text');
+    if (t.closest(TEXT)) return wrap.classList.add('hm-text');
+    const el = t.closest(INTERACTIVE);
+    if (!el) return;
+    const custom = el.getAttribute('data-cursor');
+    const isProject = el.querySelector('img, video') || /live|project|case/i.test(el.textContent || '');
+    if (custom || (el.tagName === 'A' && isProject && el.offsetWidth > 120)) {
+      label.textContent = custom || 'View';
+      wrap.classList.add('hm-label');
+    } else wrap.classList.add('hm-hover');
+  });
+
+  (function loop() {
+    dx += (mx - dx) * 0.6; dy += (my - dy) * 0.6;
+    const nx = rx + (mx - rx) * 0.15, ny = ry + (my - ry) * 0.15;
+    vx = nx - rx; vy = ny - ry; rx = nx; ry = ny;
+    const speed = Math.min(Math.hypot(vx, vy) / 40, 0.35);
+    const angle = Math.atan2(vy, vx) * 180 / Math.PI;
+    const squash = wrap.classList.contains('hm-label') ? 0 : speed;
+    dot.style.transform = `translate3d(${dx}px, ${dy}px, 0)`;
+    ring.style.transform = `translate3d(${rx}px, ${ry}px, 0) rotate(${angle}deg) scale(${1 + squash}, ${1 - squash})`;
+    label.style.rotate = `${-angle}deg`;
+    requestAnimationFrame(loop);
+  })();
 })();
 </script>
 </body>
