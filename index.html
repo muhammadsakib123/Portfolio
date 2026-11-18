@@ -223,6 +223,12 @@ form .btn{margin-top:6px;justify-self:start}
 footer{padding:20px 0 calc(40px + env(safe-area-inset-bottom,0px));display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:14px}
 footer nav{display:flex;gap:20px}
 footer nav a:hover{color:var(--ink)}
+.showreel{flex-basis:100%;margin:8px 0 28px;border-radius:var(--radius-l);overflow:hidden;background:#111110;border:1px solid var(--line);position:relative}
+.showreel video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#111110}
+.showreel .sr-label{position:absolute;left:20px;top:18px;display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;background:var(--lime);color:var(--lime-ink);font:600 13px var(--body);letter-spacing:.04em;pointer-events:none}
+.showreel .sr-sound{position:absolute;right:16px;bottom:16px;border:0;cursor:pointer;padding:9px 16px;border-radius:999px;background:rgba(17,17,16,.72);color:#f1f1ec;font:600 13px var(--body);backdrop-filter:blur(8px)}
+.showreel .sr-sound:hover{background:rgba(17,17,16,.9)}
+@media (max-width:640px){.showreel{border-radius:var(--radius-m)}.showreel .sr-label{left:12px;top:12px}}
 
 /* Real Behance shots */
 .cover.shot,.g{position:relative}
@@ -726,6 +732,11 @@ body.dark .lp-rail i::after{background:#f1f1ec}
 </main>
 
 <footer class="wrap">
+  <div class="showreel">
+    <video id="showreel" src="showreel.mp4" poster="showreel-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Showreel of Muhammad Sakib's UI/UX projects"></video>
+    <span class="sr-label">▶ Showreel 2026</span>
+    <button class="sr-sound" type="button" id="showreelSound" aria-pressed="false">Sound on</button>
+  </div>
   <span>© 2026 Muhammad Sakib.</span>
   <nav>
     <a href="https://www.behance.net/shakibadnan" target="_blank" rel="noopener">Behance</a>
@@ -1309,6 +1320,15 @@ els.forEach(e=>io.observe(e))})();
   resize(); measure(); cur = target;
 })();
 
+</script>
+<script>
+(() => {
+  const v = document.getElementById('showreel'), b = document.getElementById('showreelSound');
+  if (!v) return;
+  b.addEventListener('click', () => { v.muted = !v.muted; if (!v.muted) v.play(); b.textContent = v.muted ? 'Sound on' : 'Sound off'; b.setAttribute('aria-pressed', String(!v.muted)); });
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { v.removeAttribute('autoplay'); v.pause(); v.controls = true; }
+  if ('IntersectionObserver' in window) new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { if (v.autoplay) v.play().catch(()=>{}); } else v.pause(); }), { threshold: .25 }).observe(v);
+})();
 </script>
 </body>
 </html>
