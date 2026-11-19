@@ -449,6 +449,17 @@ body.dark .lp-rail i::after{background:#f1f1ec}
 .id-card .id-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:999px;background:#f1f3f6;color:#111;font-weight:700;font-size:13px;text-decoration:none;box-shadow:inset 0 -2px 0 rgba(0,0,0,.08),0 4px 14px rgba(0,0,0,.2);white-space:nowrap}
 .id-card .id-btn:hover{background:#fff}
 </style>
+
+<style id="cradle-swing">
+/* Cradle swing: the card swings from the top of the string */
+.hero-stage figure.portrait{
+  transform-origin:50% -470px;
+  animation:pop 1s cubic-bezier(.2,.8,.2,1) .5s both, cradle 4s ease-in-out 1.5s infinite;
+}
+.hero-stage figure.portrait:hover{animation-play-state:running,paused}
+@keyframes cradle{0%,100%{transform:rotate(2deg)}50%{transform:rotate(-2deg)}}
+@media (prefers-reduced-motion:reduce){.hero-stage figure.portrait{animation:none}}
+</style>
 </head>
 <body>
 
